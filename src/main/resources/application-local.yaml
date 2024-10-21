@@ -1,11 +1,21 @@
 management:
   endpoints:
-    web:
+    enabled-by-default: false
+    jmx:
       exposure:
-        include: "*"
+        exclude: "*"
+    web:
+      base-path: "/admin/actuator"
+      exposure:
+        include: "health, prometheus"
   endpoint:
     health:
+      enabled: true
       show-details: always
+    prometheus:
+      enabled: true
+  server:
+    port: 13022
 spring:
   config:
     activate:
