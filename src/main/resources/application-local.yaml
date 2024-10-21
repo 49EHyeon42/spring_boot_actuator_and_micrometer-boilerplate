@@ -7,8 +7,10 @@ management:
     web:
       base-path: ${ACTUATOR_BASE_PATH}
       exposure:
-        include: "health, prometheus"
+        include: "auditevents, health, prometheus"
   endpoint:
+    auditevents:
+      enabled: true
     health:
       enabled: true
       show-details: always
