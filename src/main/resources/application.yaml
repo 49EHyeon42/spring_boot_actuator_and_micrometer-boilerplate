@@ -1,3 +1,5 @@
 spring:
   application:
     name: actuator_and_micrometer
+  profiles:
+    active: local

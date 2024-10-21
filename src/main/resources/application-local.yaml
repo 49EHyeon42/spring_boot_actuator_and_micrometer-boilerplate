@@ -1,0 +1,24 @@
+management:
+  endpoints:
+    enabled-by-default: false
+    jmx:
+      exposure:
+        exclude: "*"
+    web:
+      base-path: ${ACTUATOR_BASE_PATH}
+      exposure:
+        include: "auditevents, health, prometheus"
+  endpoint:
+    auditevents:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+    prometheus:
+      enabled: true
+  server:
+    port: ${ACTUATOR_SERVER_PORT}
+spring:
+  config:
+    activate:
+      on-profile: local
