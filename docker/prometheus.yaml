@@ -9,6 +9,6 @@ scrape_configs:
     static_configs:
       - targets: [ "grafana:3000" ]
   - job_name: spring-boot-actuator
-    metrics_path: /actuator/prometheus
+    metrics_path: admin/actuator/prometheus
     static_configs:
-      - targets: [ "host.docker.internal:8080" ]
+      - targets: [ "host.docker.internal:13022" ]
