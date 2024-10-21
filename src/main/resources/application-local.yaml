@@ -5,7 +5,7 @@ management:
       exposure:
         exclude: "*"
     web:
-      base-path: "/admin/actuator"
+      base-path: ${ACTUATOR_BASE_PATH}
       exposure:
         include: "health, prometheus"
   endpoint:
@@ -15,7 +15,7 @@ management:
     prometheus:
       enabled: true
   server:
-    port: 13022
+    port: ${ACTUATOR_SERVER_PORT}
 spring:
   config:
     activate:

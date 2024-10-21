@@ -1,5 +1,6 @@
 package deb.ehyeon.actuator_and_micrometer.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -17,13 +18,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Value("${management.endpoints.web.base-path}")
+    private String actuatorBasePath;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .formLogin(Customizer.withDefaults())
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/admin/actuator/**").hasRole("ADMIN")
+                                .requestMatchers(actuatorBasePath + "/**").hasRole("ADMIN")
                                 .anyRequest().authenticated());
 
         return httpSecurity.build();
